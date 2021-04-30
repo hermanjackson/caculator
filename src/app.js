@@ -2,10 +2,23 @@
 import "bootstrap";
 import "./style.css";
 
-import "./assets/img/rigo-baby.jpg";
-import "./assets/img/4geeks.ico";
+class Caculator {
+  constructor(previousOperatorTextElement, currentOperatorTextElement) {
+    this.previousOperatorTextElement = previousOperatorTextElement;
+    this.currentOperatorTextElement = previousOperatorTextElement;
+  }
+  clear() {}
+  delet() {}
+}
 
-window.onload = function() {
-  //write your code here
-  console.log("Hello Rigo from the console!");
-};
+const numberButtons = document.querySelector("[data-number]");
+const operationButtons = document.querySelector("[data-operation]");
+const equalButton = document.querySelector("[data-equals]");
+const deleteButton = document.querySelector("[data-delete]");
+const allClearButton = document.querySelector("[data-clear]");
+const previousOperatorTextElement = document.querySelector(
+  "[data-previous-operand]"
+);
+const currentOperatorTextElement = document.querySelector(
+  "[data-current-operand]"
+);
