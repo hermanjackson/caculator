@@ -2,23 +2,48 @@
 import "bootstrap";
 import "./style.css";
 
-class Caculator {
-  constructor(previousOperatorTextElement, currentOperatorTextElement) {
-    this.previousOperatorTextElement = previousOperatorTextElement;
-    this.currentOperatorTextElement = previousOperatorTextElement;
+class Calculator {
+  constructor(previousOperandTextElement, currentOperandTextElement) {
+    this.previousOperandTextElement = previousOperandTextElement;
+    this.currentOperandTextElement = currentOperandTextElement;
+    this.clear();
   }
-  clear() {}
-  delet() {}
+  clear() {
+    this.currentOperand = "";
+    this.previousOperand = "";
+    this.operation = undefined;
+  }
+  delete() {}
+  appendNumber(number) {
+    this.currentOperand = number;
+  }
+  chooseOperation(operation) {}
+  compute() {}
+  updateDisplay() {
+    this.currentOperandTextElement.innertext = this.currentOperand;
+  }
 }
 
-const numberButtons = document.querySelector("[data-number]");
-const operationButtons = document.querySelector("[data-operation]");
+const numberButtons = document.querySelectorAll("[data-number]");
+const operationButtons = document.querySelectorAll("[data-operation]");
 const equalButton = document.querySelector("[data-equals]");
 const deleteButton = document.querySelector("[data-delete]");
-const allClearButton = document.querySelector("[data-clear]");
-const previousOperatorTextElement = document.querySelector(
+const allClearButton = document.querySelector("[data-all-clear]");
+const previousOperandTextElement = document.querySelector(
   "[data-previous-operand]"
 );
-const currentOperatorTextElement = document.querySelector(
-  "[data-current-operand]"
+const currentOperandTextElement = document.querySelector(
+  "[data-currenndperand]"
 );
+
+const calculator = new Calculator(
+  previousOperandTextElement,
+  currentOperandTextElement
+);
+
+numberButtons.forEach(buttons => {
+  buttons.addEventListener("click", () => {
+    calculator.appendNumber(buttons.innertext);
+    calculator.updateDisplay();
+  });
+});
